@@ -1,0 +1,11 @@
+# Git 
+alias gst='git status'
+alias gpr='git pull'
+alias gpo='unset PUSH_ANYWAY; git push origin HEAD'
+alias ga='git add .'
+alias gcm='git checkout main'
+alias gcmm='git commit -m'
+alias gss='git stash'
+alias gsp='git stash pop'
+alias gl='git log'
+
