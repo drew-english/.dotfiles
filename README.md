@@ -8,4 +8,4 @@ Version controlled terminal configuration files.
 2. Clone this repository to the home directory
 3. Run `stow` from the `~/.dotfiles` directory
  - `rm` any conflicting files from the system
-
+ - Optionially use `stow --adopt` to import host system files here
