@@ -1,0 +1,44 @@
+# Aliases
+# git
+alias gst='git status'
+alias gdf='git diff'
+alias gpr='git pull --rebase --autostash --stat'
+alias gpo='unset PUSH_ANYWAY; git push origin HEAD'
+alias gpro='gpr;gpo'
+alias ga='git add .'
+alias gcb='git co -b'
+alias ezc='[ -f ~/workspace/easy_branch_checkout.rb ] && ruby ~/workspace/easy_branch_checkout.rb'
+alias gp='git pair'
+alias gcm='git co $(git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4)'
+alias gc='git co'
+alias gss='git stash'
+alias gsp='git stash pop'
+alias grhh='git reset --hard HEAD'
+alias grsh='git reset --soft HEAD^'
+alias gl='git log'
+alias grl='git reflog'
+alias gmm='git merge master'
+alias gmom='git merge origin/master'
+alias gri='git rebase -i'
+alias gcp='git cherry-pick'
+alias gca='git add . && git commit --amend --no-edit'
+alias gcmm='git commit -m'
+alias co_test='git fetch; git tag | grep deploy_test1_ | sort | tail -1 | xargs git branch --all --contains | grep -o [1-9][0-9].[0-1][0-9].[1-9] | sort | tail -1 | xargs git checkout'
+alias co_pie='git fetch; git tag | grep deploy_pie1_ | sort | tail -1 | xargs git branch --all --contains | grep -o [1-9][0-9].[0-1][0-9].[1-9] | sort | tail -1 | xargs git checkout'
+alias co_stage='git fetch; git tag | grep deploy_stage1_ | sort | tail -1 | xargs git branch --all --contains | grep -o [1-9][0-9].[0-1][0-9].[1-9] | sort | tail -1 | xargs git checkout'
+alias co_prod='git fetch; git tag | grep deploy_production_ | sort | tail -1 | xargs git branch --all --contains | grep -o [1-9][0-9].[0-1][0-9].[1-9] | sort | tail -1 | xargs git checkout'
+alias gwm='git whatchanged --since 7-days-ago | grep migrate'
+alias glw='git log --pretty="%h - %s" --since="7 days ago"'
+alias fbr='git checkout $(git branch --all | grep -v HEAD | fzf | sed "s/.* //" | sed "s#remotes/[^/]*/##")'
+alias fcs='git log --color=always --pretty=oneline --abbrev-commit --reverse | fzf --ansi --tac +s +m | sed "s/ .*//"'
+
+# Terraform
+alias tf='terraform'
+alias tg='terragrunt'
+alias tgra='terragrunt run-all'
+
+# Custom paths
+export PATH=~/.local/scripts:$PATH
+addToPathFront ~/.local/scripts
+addToPathFront ~/.local/bin
+
