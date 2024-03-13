@@ -1,5 +1,5 @@
 # Path modifications
-addtoPath ~/Library/Python/3.9/bin
+addToPath ~/Library/Python/3.9/bin
 addToPath /opt/homebrew/opt/postgresql@15/bin
 
 function settitle() {
