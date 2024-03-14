@@ -94,7 +94,6 @@ addToPath() {
 }
 
 source ~/.zsh_profile
-source ~/.zsh_os
 
 export NVM_DIR=~/.nvm
 
@@ -106,4 +105,7 @@ export NVM_DIR=~/.nvm
 
 # zoxide config
 eval "$(zoxide init --cmd cd zsh)"
+
+# OS specific config
+source ~/.zsh_os
 
