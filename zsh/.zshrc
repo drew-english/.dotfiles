@@ -99,7 +99,7 @@ source ~/.zsh_os
 export NVM_DIR=~/.nvm
 
 # gvm
-[[ -s "/Users/drew/.gvm/scripts/gvm" ]] && source "/Users/drew/.gvm/scripts/gvm"
+[[ -f ~/.gvm/scripts/gvm ]]  && source ~/.gvm/scripts/gvm
 
 # fzf config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
