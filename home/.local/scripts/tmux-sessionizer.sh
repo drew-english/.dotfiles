@@ -1,14 +1,24 @@
 #!/usr/bin/env bash
 # https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-sessionizer
 
-if [[ $# -eq 1 ]]; then
-    selected=$1
-else
-    selected=$(find ~/ ~/workspace -mindepth 1 -maxdepth 1 -type d | fzf)
+selected="~/"
+dir_start_idx=1
+
+if [[ $1 == "-s" ]]; then
+        dir_start_idx=2
 fi
 
-if [[ -z $selected ]]; then
-    exit 0
+if [[ $# -ge 1 ]]; then
+    selected="${*:$dir_start_idx}"
+fi
+
+
+if [[ $1 == "-s" ]]; then
+        selected=$(find $selected -mindepth 1 -maxdepth 1 -type d | fzf)
+fi
+
+if [[ ! -d $selected ]]; then
+        exit 0
 fi
 
 selected_name=$(basename "$selected" | tr . _)
