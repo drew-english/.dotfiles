@@ -8,11 +8,7 @@ command_exists() {
 
 clipboard_copy_command() {
 	if command_exists "pbcopy"; then
-		# if command_exists "reattach-to-user-namespace"; then
-		# 	echo "reattach-to-user-namespace pbcopy"
-		# else
 		echo "pbcopy"
-		# fi
 	elif command_exists "clip.exe"; then # WSL clipboard command
 		echo "cat | clip.exe"
 	elif command_exists "wl-copy"; then # wl-clipboard: Wayland clipboard utilities
@@ -31,8 +27,4 @@ copy_command=$(clipboard_copy_command)
 tmux bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "$copy_command"
 tmux bind-key -T copy-mode-vi Y send-keys -X copy-pipe-and-cancel "tmux paste-buffer -p"
 tmux bind-key -T copy-mode-vi M-y send-keys -X copy-pipe-and-cancel "$copy_command; tmux paste-buffer -p"
-# tmux bind-key -T copy-mode-vi ! send-keys -X copy-pipe-and-cancel "$copy_wo_newline_command"
-# if [[ "$(yank_with_mouse)" == "on" ]]; then
-# 	tmux bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X "$(yank_action)" "$copy_command_mouse"
-# fi
 
