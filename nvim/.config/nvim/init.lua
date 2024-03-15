@@ -86,7 +86,7 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
 			vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
 			vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
-			vim.keymap.set("n", "<leader><C-p>", builtin.git_files, { desc = "[S]earch by [G]it" })
+			vim.keymap.set("n", "<C-p>", builtin.git_files, { desc = "[S]earch by [G]it" })
 			vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
 
 			-- Slightly advanced example of overriding default behavior and theme
@@ -328,6 +328,23 @@ require("lazy").setup({
 		config = function(_, opts)
 			require("nvim-treesitter.configs").setup(opts)
 		end,
+	},
+
+	{ -- Git commands
+		"tpope/vim-fugitive",
+		event = "BufWinEnter",
+		config = function()
+			vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+		end,
+	},
+
+	{
+		"folke/zen-mode.nvim",
+		opts = {
+			window = {
+				width = 0.80,
+			},
+		},
 	},
 
 	-- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
