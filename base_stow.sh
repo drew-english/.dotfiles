@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-STOW_FOLDERS="zsh home tmux"
+STOW_FOLDERS="nvim tmux zed zsh"
 [[ -v OS_STOW_FOLDERS ]] && STOW_FOLDERS="$STOW_FOLDERS $OS_STOW_FOLDERS"
 
 for folder in  $(echo $STOW_FOLDERS)
