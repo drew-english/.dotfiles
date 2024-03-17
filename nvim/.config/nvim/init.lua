@@ -99,10 +99,9 @@ require("lazy").setup({
 			end, { desc = "[/] Fuzzily search in current buffer" })
 			vim.keymap.set("n", "<leader>s/", function()
 				builtin.live_grep({
-					grep_open_files = true,
-					prompt_title = "Live Grep in Open Files",
+					prompt_title = "Live Grep in Files",
 				})
-			end, { desc = "[S]earch [/] in Open Files" })
+			end, { desc = "[S]earch [/] in All Files" })
 		end,
 	},
 
@@ -307,7 +306,7 @@ require("lazy").setup({
 			require("mini.ai").setup({ n_lines = 500 })
 			require("mini.surround").setup()
 			local statusline = require("mini.statusline")
-			statusline.setup()
+			statusline.setup({ use_icons = false })
 
 			---@diagnostic disable-next-line: duplicate-set-field
 			statusline.section_location = function()
@@ -332,7 +331,6 @@ require("lazy").setup({
 
 	{ -- Git commands
 		"tpope/vim-fugitive",
-		event = "BufWinEnter",
 		config = function()
 			vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
 		end,
@@ -346,6 +344,8 @@ require("lazy").setup({
 			},
 		},
 	},
+
+	"github/copilot.vim",
 
 	-- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
 	--    This is the easiest way to modularize your config.
