@@ -18,4 +18,15 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 
 vim.keymap.set("n", "<leader>zz", vim.cmd.ZenMode)
 
-vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", { silent = true, noremap = true })
+vim.keymap.set("n", "<leader>xw", function()
+	require("trouble").toggle("workspace_diagnostics")
+end)
+vim.keymap.set("n", "<leader>xd", function()
+	require("trouble").toggle("document_diagnostics")
+end)
+vim.keymap.set("n", "<leader>xq", function()
+	require("trouble").toggle("quickfix")
+end)
+vim.keymap.set("n", "<leader>xl", function()
+	require("trouble").toggle("loclist")
+end)
