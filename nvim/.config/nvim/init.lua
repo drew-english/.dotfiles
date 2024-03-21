@@ -140,7 +140,7 @@ require("lazy").setup({
 					)
 
 					-- Rename the variable under your cursor
-					map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+					map("<F2>", vim.lsp.buf.rename, "Rename [F2]")
 
 					-- Execute a code action, usually your cursor needs to be on top of an error
 					map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
