@@ -18,6 +18,7 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 
 vim.keymap.set("n", "<leader>zz", vim.cmd.ZenMode)
 
+-- Trouble
 vim.keymap.set("n", "<leader>xw", function()
 	require("trouble").toggle("workspace_diagnostics")
 end)

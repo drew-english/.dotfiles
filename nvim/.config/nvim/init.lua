@@ -345,7 +345,7 @@ require("lazy").setup({
 
 	"github/copilot.vim",
 
-	{
+	{ -- Diagnostics view
 		"folke/trouble.nvim",
 		opts = {
 			icons = false,
@@ -360,6 +360,13 @@ require("lazy").setup({
 			},
 			use_diagnostic_signs = false,
 		},
+	},
+
+	{ -- Undo tree
+		"mbbill/undotree",
+		config = function()
+			vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+		end,
 	},
 
 	-- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
