@@ -14,7 +14,7 @@ return {
 				return ""
 			end
 
-			local replaced, _ = default:gsub("Git", "")
+			local replaced, _ = default:gsub("Git ", "")
 			return replaced
 		end
 

@@ -25,7 +25,7 @@ vim.opt.timeoutlen = 300
 vim.opt.inccommand = "split"
 
 vim.opt.cursorline = true
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
 
 vim.opt.tabstop = 4
