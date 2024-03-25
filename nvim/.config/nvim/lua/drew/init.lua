@@ -1,9 +1,6 @@
-require("custom.remap")
-require("custom.set")
-
-function R(name)
-	require("plenary.reload").reload_module(name)
-end
+require("drew.remap")
+require("drew.set")
+require("drew.lazy")
 
 vim.api.nvim_create_user_command("DiagnosticsToggleVirtualText", function()
 	local current_value = vim.diagnostic.config().virtual_text
