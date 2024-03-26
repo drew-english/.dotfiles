@@ -1,12 +1,9 @@
-return { -- LSP Configuration & Plugins
+return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		-- Automatically install LSPs and related tools to stdpath for neovim
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
-
-		-- Useful status updates for LSP.
 		{ "j-hui/fidget.nvim", opts = {} },
 	},
 	config = function()
@@ -16,32 +13,19 @@ return { -- LSP Configuration & Plugins
 				local map = function(keys, func, desc)
 					vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 				end
-
-				-- Jump to the definition of the word under your cursor.
 				map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-
-				-- Find references for the word under your cursor.
 				map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-
-				-- Fuzzy find all the symbols in your current document.
-				map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
-
-				-- Fuzzy find all the symbols in your current workspace
-				map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
-
-				-- Rename the variable under your cursor
-				map("<F2>", vim.lsp.buf.rename, "Rename [F2]")
-
-				-- Execute a code action, usually your cursor needs to be on top of an error
+				map("<leader>csd", require("telescope.builtin").lsp_document_symbols, "[C]ode [S]ymbols [D]ocument")
+				map(
+					"<leader>csw",
+					require("telescope.builtin").lsp_dynamic_workspace_symbols,
+					"[C]ode [S]ymbols [W]orkspace"
+				)
+				map("<leader>cr", vim.lsp.buf.rename, "[C]ode [R]ename")
 				map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-
-				-- Opens a popup that displays documentation about the word under your cursor
 				map("K", vim.lsp.buf.hover, "Hover Documentation")
-
 				map("<leader>f", vim.lsp.buf.format, "Format file")
 
-				-- The following two autocommands are used to highlight references of the
-				-- word under your cursor when your cursor rests there for a little while.
 				local client = vim.lsp.get_client_by_id(event.data.client_id)
 				if client and client.server_capabilities.documentHighlightProvider then
 					vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
@@ -88,14 +72,13 @@ return { -- LSP Configuration & Plugins
 			},
 		}
 
-		require("mason").setup()
-
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
 			"stylua", -- Used to format lua code
 		})
-		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
+		require("mason").setup()
+		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 		require("mason-lspconfig").setup({
 			handlers = {
 				function(server_name)
