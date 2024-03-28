@@ -27,4 +27,5 @@ copy_command=$(clipboard_copy_command)
 tmux bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "$copy_command"
 tmux bind-key -T copy-mode-vi Y send-keys -X copy-pipe-and-cancel "tmux paste-buffer -p"
 tmux bind-key -T copy-mode-vi M-y send-keys -X copy-pipe-and-cancel "$copy_command; tmux paste-buffer -p"
+tmux bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "$copy_command"
 
