@@ -17,6 +17,17 @@ return {
 			return replaced
 		end
 
+		local original_section_diagnostics = statusline.section_diagnostics
+		statusline.section_diagnostics = function(args)
+			local default = original_section_diagnostics(args)
+			if default == "" then
+				return ""
+			end
+
+			local replaced, _ = default:gsub("LSP ", "")
+			return replaced
+		end
+
 		statusline.section_location = function()
 			return "%2l:%-2v"
 		end
