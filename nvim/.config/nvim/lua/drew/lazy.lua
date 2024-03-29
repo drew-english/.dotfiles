@@ -23,4 +23,5 @@ require("lazy").setup("drew.plugins", {
 			lazy = "💤 ",
 		},
 	},
+	change_detection = { notify = false },
 })

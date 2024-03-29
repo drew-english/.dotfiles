@@ -1,24 +1,36 @@
-return { -- Fuzzy Finder (files, lsp, etc)
+return {
 	"nvim-telescope/telescope.nvim",
 	event = "VimEnter",
 	branch = "0.1.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		{ -- If encountering errors, see telescope-fzf-native README for install instructions
+		{
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "make",
 			cond = function()
 				return vim.fn.executable("make") == 1
 			end,
 		},
-		{ "nvim-telescope/telescope-ui-select.nvim" },
+		"nvim-telescope/telescope-ui-select.nvim",
+		"folke/trouble.nvim",
 	},
 	config = function()
-		-- [[ Configure Telescope ]]
+		local ts_actions = require("telescope.actions")
+		local transform_mod = require("telescope.actions.mt").transform_mod
+
+		local custom_actions = transform_mod({
+			open_trouble_qf = function(_)
+				require("trouble").open("quickfix")
+			end,
+		})
+
 		require("telescope").setup({
 			defaults = {
 				mappings = {
-					i = { ["<esc>"] = require("telescope.actions").close },
+					i = {
+						["<esc>"] = ts_actions.close,
+						["<C-q>"] = ts_actions.smart_send_to_qflist + custom_actions.open_trouble_qf,
+					},
 				},
 			},
 			-- pickers = {}
@@ -49,6 +61,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 				previewer = false,
 			}))
 		end, { desc = "[/] Fuzzily search in current buffer" })
+
 		vim.keymap.set("n", "<leader>s/", function()
 			builtin.live_grep({
 				prompt_title = "Live Grep in Files",
