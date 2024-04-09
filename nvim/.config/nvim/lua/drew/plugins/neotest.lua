@@ -5,10 +5,20 @@ return {
 		"nvim-lua/plenary.nvim",
 		"antoinemadec/FixCursorHold.nvim",
 		"nvim-treesitter/nvim-treesitter",
-		"nvim-extensions/nvim-ginkgo",
 		"olimorris/neotest-rspec",
+		"d-vim/nvim-ginkgo",
 	},
 	config = function()
+		local neotest_ns = vim.api.nvim_create_namespace("neotest")
+		vim.diagnostic.config({
+			virtual_text = {
+				format = function(diagnostic)
+					local message = diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
+					return message
+				end,
+			},
+		}, neotest_ns)
+
 		local ntest = require("neotest")
 		ntest.setup({
 			adapters = {

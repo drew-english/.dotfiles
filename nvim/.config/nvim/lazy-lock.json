@@ -18,7 +18,7 @@
   "neotest": { "branch": "master", "commit": "e07fe8241112274aae9947b98d255763738a1d52" },
   "neotest-rspec": { "branch": "main", "commit": "c1c3f36e1b1a23698534e6326e90876f87b773a4" },
   "nvim-cmp": { "branch": "main", "commit": "04e0ca376d6abdbfc8b52180f8ea236cbfddf782" },
-  "nvim-ginkgo": { "branch": "main", "commit": "359cdc993063f72e8cfcef795ac0ef77f4a23b7c" },
+  "nvim-ginkgo": { "branch": "main", "commit": "a3713aabc7b95a9c8d7cd17ebb84302cdd3e3863" },
   "nvim-lspconfig": { "branch": "master", "commit": "1917b562a02f20885900b1da0f0ea25028ccedab" },
   "nvim-nio": { "branch": "master", "commit": "5800f585def265d52f1d8848133217c800bcb25d" },
   "nvim-treesitter": { "branch": "master", "commit": "9d39f00a9559cf3505d73b486c0b8055a6db4215" },
