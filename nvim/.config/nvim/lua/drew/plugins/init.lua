@@ -1,5 +1,9 @@
 return {
-	-- "tpope/vim-sleuth",
-	"numToStr/Comment.nvim",
+	{
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup()
+		end,
+	},
 	"github/copilot.vim",
 }
