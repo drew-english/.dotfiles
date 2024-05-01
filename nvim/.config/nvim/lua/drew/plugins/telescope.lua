@@ -16,20 +16,13 @@ return {
 	},
 	config = function()
 		local ts_actions = require("telescope.actions")
-		local transform_mod = require("telescope.actions.mt").transform_mod
-
-		local custom_actions = transform_mod({
-			open_trouble_qf = function(_)
-				require("trouble").open("quickfix")
-			end,
-		})
 
 		require("telescope").setup({
 			defaults = {
 				mappings = {
 					i = {
 						["<esc>"] = ts_actions.close,
-						["<C-q>"] = ts_actions.smart_send_to_qflist + custom_actions.open_trouble_qf,
+						["<C-q>"] = ts_actions.smart_send_to_qflist,
 					},
 				},
 			},
@@ -53,6 +46,7 @@ return {
 		vim.keymap.set("n", "<C-p>", builtin.git_files, { desc = "[S]earch by [G]it" })
 		vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "[S]earch [B]uffers" })
 		vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
+		vim.keymap.set("n", "<leader>s*", builtin.grep_string, { desc = "[S]earch [*] in All Files" })
 
 		vim.keymap.set("n", "<leader>/", function()
 			builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
