@@ -23,6 +23,9 @@ return {
 					i = {
 						["<esc>"] = ts_actions.close,
 						["<C-q>"] = ts_actions.smart_send_to_qflist,
+						-- Match prev and next key binds
+						["<Tab>"] = ts_actions.toggle_selection + ts_actions.move_selection_next,
+						["<S-Tab>"] = ts_actions.toggle_selection + ts_actions.move_selection_previous,
 					},
 				},
 			},
