@@ -11,6 +11,13 @@ return {
 	{
 		"EdenEast/nightfox.nvim",
 		init = function()
+			require("nightfox").setup({
+				groups = {
+					nightfox = {
+						LineNr = { fg = "#737272" },
+					},
+				},
+			})
 			vim.cmd.colorscheme("nightfox")
 		end,
 	},
