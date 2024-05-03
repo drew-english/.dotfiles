@@ -5,5 +5,10 @@ return {
 			require("Comment").setup()
 		end,
 	},
-	"github/copilot.vim",
+	{
+		"github/copilot.vim",
+		config = function()
+			vim.cmd.Copilot("disable")
+		end,
+	},
 }
