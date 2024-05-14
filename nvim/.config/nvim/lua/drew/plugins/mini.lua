@@ -3,6 +3,11 @@ return {
 	config = function()
 		-- require("mini.ai").setup({ n_lines = 500 })
 		require("mini.comment").setup()
+		require("mini.bracketed").setup({
+			undo = { suffix = "" },
+			window = { suffix = "" },
+			yank = { suffix = "" },
+		})
 
 		local statusline = require("mini.statusline")
 		statusline.setup()
