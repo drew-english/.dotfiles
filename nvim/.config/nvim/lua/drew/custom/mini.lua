@@ -20,13 +20,13 @@ local format_summary = function(data)
 	end
 
 	local t = {}
-	if summary.add > 0 then
+	if summary ~= nil and summary.add > 0 then
 		table.insert(t, "+" .. summary.add)
 	end
-	if summary.change > 0 then
+	if summary ~= nil and summary.change > 0 then
 		table.insert(t, "~" .. summary.change)
 	end
-	if summary.delete > 0 then
+	if summary ~= nil and summary.delete > 0 then
 		table.insert(t, "-" .. summary.delete)
 	end
 	target.minidiff_summary_string = table.concat(t, " ")
