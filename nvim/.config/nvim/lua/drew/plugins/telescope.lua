@@ -12,7 +12,6 @@ return {
 			end,
 		},
 		"nvim-telescope/telescope-ui-select.nvim",
-		"folke/trouble.nvim",
 	},
 	config = function()
 		local ts_actions = require("telescope.actions")
