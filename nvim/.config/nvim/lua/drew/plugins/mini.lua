@@ -3,6 +3,14 @@ return {
 	config = function()
 		require("mini.statusline").setup()
 		require("mini.comment").setup()
+		require("mini.files").setup({
+			mappings = {
+				go_in_plus = "<CR>",
+			},
+			options = {
+				use_as_default_explorer = false,
+			},
+		})
 
 		require("mini.bracketed").setup({
 			undo = { suffix = "" },

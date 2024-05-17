@@ -2,6 +2,12 @@ local statusline = require("mini.statusline")
 local diff = require("mini.diff")
 
 vim.keymap.set("n", "<leader>hd", diff.toggle_overlay, { desc = "Toggle [h]unk [d]iff overlay" })
+vim.keymap.set(
+	"n",
+	"-",
+	"<CMD>lua MiniFiles.open(vim.api.nvim_buf_get_name(0), false)<CR>",
+	{ desc = "Open MiniFiles" }
+)
 
 -- Set change summary format to +{add} ~{change} -{delete}
 local format_summary = function(data)
