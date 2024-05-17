@@ -1,5 +1,4 @@
 # Path modifications
-addToPath /opt/nvim-linux64/bin
 
 # Custom methods
 mv_to_host() {

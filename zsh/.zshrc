@@ -106,6 +106,8 @@ export NVM_DIR=~/.nvm
 # zoxide config
 eval "$(zoxide init --cmd cd zsh)"
 
+source ~/.asdf/asdf.sh
+
 # OS specific config
 source ~/.zsh_os
 
