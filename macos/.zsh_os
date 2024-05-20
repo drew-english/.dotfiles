@@ -6,13 +6,8 @@ function settitle() {
   echo -n -e "\033]0;"$*"\007"
 }
 
-# Setup
+# Setup brew
 source $(brew --prefix nvm)/nvm.sh
-
-# Add RVM to PATH for scripting.
-addToPath $HOME/.rvm/bin
-export CDPATH=~/projects
-autoload -U compinit; compinit # make auto-complete available for CDPATH directories
 
 # pnpm
 export PNPM_HOME="/Users/drew/Library/pnpm"
