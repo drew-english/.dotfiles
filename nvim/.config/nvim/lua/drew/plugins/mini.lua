@@ -34,9 +34,11 @@ return {
 			},
 		})
 
-		require("mini.ai").setup({
+		local ai = require("mini.ai")
+		ai.setup({
 			custom_textobjects = {
 				h = diff.textobject,
+				F = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }),
 			},
 		})
 
