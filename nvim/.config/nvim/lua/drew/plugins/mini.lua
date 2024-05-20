@@ -2,7 +2,6 @@ return {
 	"echasnovski/mini.nvim",
 	config = function()
 		require("mini.statusline").setup()
-		require("mini.comment").setup()
 		require("mini.files").setup({
 			mappings = {
 				go_in_plus = "<CR>",

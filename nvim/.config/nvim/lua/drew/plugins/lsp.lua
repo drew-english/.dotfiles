@@ -23,7 +23,6 @@ return {
 				)
 				map("<leader>cr", vim.lsp.buf.rename, "[C]ode [R]ename")
 				map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-				map("K", vim.lsp.buf.hover, "Hover Documentation")
 				map("<leader>f", vim.lsp.buf.format, "Format file")
 
 				local client = vim.lsp.get_client_by_id(event.data.client_id)
