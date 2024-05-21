@@ -5,9 +5,6 @@ mv_to_host() {
     mv $1 /mnt/c/Users/englisan/Downloads
 }
 
-# Setup
-source /usr/share/rvm/scripts/rvm
-
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # >>> conda initialize >>>
