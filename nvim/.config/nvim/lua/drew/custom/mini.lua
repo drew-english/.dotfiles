@@ -10,7 +10,7 @@ vim.keymap.set(
 )
 
 -- Set change summary format to +{add} ~{change} -{delete}
-local format_summary = function(data)
+local format_diff_summary = function(data)
 	local target = vim.b[data.buf]
 	local summary = target.minidiff_summary
 
@@ -31,34 +31,16 @@ local format_summary = function(data)
 	end
 	target.minidiff_summary_string = table.concat(t, " ")
 end
-local au_opts = { pattern = "MiniDiffUpdated", callback = format_summary }
-vim.api.nvim_create_autocmd("User", au_opts)
 
--- Modify section_git to use mini.diff instead of gitsigns
-statusline.section_git = function(args)
-	if vim.bo.buftype ~= "" then
-		return ""
-	end
+vim.api.nvim_create_autocmd("User", { pattern = "MiniDiffUpdated", callback = format_diff_summary })
 
-	local head = vim.fn.FugitiveHead() or ""
-	local signs = statusline.is_truncated(args.trunc_width) and "" or (vim.b.minidiff_summary_string or "")
-	local icon = args.icon or ""
-
-	local str = ""
-	if head ~= "" then
-		str = str .. icon .. " " .. head
-	end
-
-	if signs ~= "" then
-		if str ~= "" then
-			str = str .. " "
-		end
-
-		str = str .. signs
-	end
-
-	return str
+-- Set git summary format to {head_name}
+local format_git_summary = function(data)
+	local summary = vim.b[data.buf].minigit_summary
+	vim.b[data.buf].minigit_summary_string = summary ~= nil and summary.head_name or ""
 end
+
+vim.api.nvim_create_autocmd("User", { pattern = "MiniGitUpdated", callback = format_git_summary })
 
 -- Simplify statusline location
 statusline.section_location = function()

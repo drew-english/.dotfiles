@@ -1,6 +1,7 @@
 return {
 	"echasnovski/mini.nvim",
 	config = function()
+		require("mini.git").setup()
 		require("mini.statusline").setup()
 		require("mini.files").setup({
 			mappings = {
