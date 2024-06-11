@@ -63,7 +63,7 @@ return {
 			"gopls",
 			"lua_ls",
 			"stylua",
-			"solargraph",
+			"ruby-lsp",
 		}
 
 		require("mason").setup()
