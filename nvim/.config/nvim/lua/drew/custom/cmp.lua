@@ -36,5 +36,6 @@ cmp.setup({
 		{ name = "nvim_lsp" },
 		{ name = "path" },
 		{ name = "buffer" },
+		{ name = "lazydev", group_index = 0 },
 	},
 })

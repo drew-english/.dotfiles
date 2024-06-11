@@ -1,14 +1,14 @@
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		"folke/neodev.nvim",
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		{ "j-hui/fidget.nvim", opts = {} },
+		{ "folke/lazydev.nvim", ft = "lua" },
 	},
 	config = function()
-		require("neodev").setup()
+		require("lazydev").setup()
 
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
