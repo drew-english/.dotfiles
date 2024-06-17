@@ -1,5 +1,5 @@
-local statusline = require("mini.statusline")
 local diff = require("mini.diff")
+local lsp_feedback = require("lsp-feedback")
 
 vim.keymap.set("n", "<leader>hd", diff.toggle_overlay, { desc = "Toggle [h]unk [d]iff overlay" })
 vim.keymap.set(
@@ -42,10 +42,39 @@ end
 
 vim.api.nvim_create_autocmd("User", { pattern = "MiniGitUpdated", callback = format_git_summary })
 
--- Simplify statusline location
-statusline.section_location = function()
+-- Configure statusline
+local section_location = function()
 	return "%2l:%-2v"
 end
+
+require("mini.statusline").setup({
+	content = {
+		active = function()
+			local mode, mode_hl = MiniStatusline.section_mode({})
+			local git = MiniStatusline.section_git({ trunc_width = 40 })
+			local section_diff = MiniStatusline.section_diff({ trunc_width = 75 })
+			local diagnostics = MiniStatusline.section_diagnostics({ trunc_width = 75 })
+			local lsp = MiniStatusline.section_lsp({ trunc_width = 75 })
+			local lsp_req_status = lsp_feedback.status_icon()
+			local lsp_hl = lsp_feedback.status_hl()
+			local filename = MiniStatusline.section_filename({ trunc_width = 140 })
+			local fileinfo = MiniStatusline.section_fileinfo({ trunc_width = 120 })
+			local location = section_location()
+			local search = MiniStatusline.section_searchcount({ trunc_width = 75 })
+
+			return MiniStatusline.combine_groups({
+				{ hl = mode_hl, strings = { mode } },
+				{ hl = "MiniStatuslineDevinfo", strings = { git, section_diff, diagnostics } },
+				{ hl = lsp_hl, strings = { lsp, lsp_req_status } },
+				"%<", -- Mark general truncate point
+				{ hl = "MiniStatuslineFilename", strings = { filename } },
+				"%=", -- End left alignment
+				{ hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
+				{ hl = mode_hl, strings = { search, location } },
+			})
+		end,
+	},
+})
 
 -- Add custom keymaps to mini.files
 local files_open_new_win = function(win_cmd)
@@ -67,5 +96,6 @@ vim.api.nvim_create_autocmd("User", {
 		local buf_id = args.data.buf_id
 		vim.keymap.set("n", "<c-v>", files_open_new_win("vs"), { buffer = buf_id, desc = "Open in vertical split" })
 		vim.keymap.set("n", "<c-t>", files_open_new_win("tabnew"), { buffer = buf_id, desc = "Open in new tab" })
+		vim.keymap.set("n", "<esc>", MiniFiles.close, { buffer = buf_id, desc = "Close" })
 	end,
 })
