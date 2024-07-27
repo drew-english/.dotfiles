@@ -29,8 +29,8 @@ return {
 			},
 			mappings = {
 				apply = "<leader>ha",
-				reset = "<leader>hu",
-				textobject = "h",
+				reset = "<leader>hr",
+				textobject = "H",
 			},
 		})
 
