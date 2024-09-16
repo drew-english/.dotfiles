@@ -23,7 +23,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("<leader>csd", require("telescope.builtin").lsp_document_symbols, "[C]ode [S]ymbols [D]ocument")
 		map("<leader>cr", vim.lsp.buf.rename, "[C]ode [R]ename")
 		map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-		map("<leader>f", vim.lsp.buf.format, "Format file")
 
 		local client = assert(vim.lsp.get_client_by_id(event.data.client_id), "must have valid client")
 		client.server_capabilities.semanticTokensProvider = nil
