@@ -93,6 +93,11 @@ addToPath() {
     fi
 }
 
+unset_proxy() {
+    proxy_env_vars=$(printenv | grep -E "(proxy|PROXY)=" | sed 's/=.\+//g' | tr '\n' ' ')
+    unset ${=proxy_env_vars}
+}
+
 source ~/.zsh_profile
 
 export NVM_DIR=~/.nvm
