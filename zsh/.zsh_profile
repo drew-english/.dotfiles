@@ -32,6 +32,14 @@ alias glw='git log --pretty="%h - %s" --since="7 days ago"'
 alias fbr='git checkout $(git branch --all | grep -v HEAD | fzf | sed "s/.* //" | sed "s#remotes/[^/]*/##")'
 alias fcs='git log --color=always --pretty=oneline --abbrev-commit --reverse | fzf --ansi --tac +s +m | sed "s/ .*//"'
 
+# Rails
+alias rc='bundle exec rails console'
+alias rs='bundle exec rails server'
+alias rsp='bundle exec rspec'
+alias rdm='bundle exec rake db:migrate'
+alias rdr='bundle exec rake db:reset'
+alias rds='bundle exec rake db:seed'
+
 # Terraform
 alias tf='terraform'
 alias tg='terragrunt'
