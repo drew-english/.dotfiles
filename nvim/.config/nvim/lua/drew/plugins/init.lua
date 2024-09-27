@@ -21,8 +21,8 @@ return {
 			{ "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
 		},
 	},
-    {
-        "kevinhwang91/nvim-bqf",
-        opts = {},
-    }
+	{
+		"kevinhwang91/nvim-bqf",
+		opts = {},
+	},
 }

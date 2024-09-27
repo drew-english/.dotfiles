@@ -8,6 +8,7 @@ return {
 		vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "[G]it [S]tatus" })
 		vim.keymap.set("n", "<leader>gb", "<cmd>Git blame<CR>", { desc = "[G]it [B]lame" })
 		vim.keymap.set("n", "<leader>go", "<cmd>GBrowse <cword><CR>", { desc = "[G]itHub [O]pen" })
+		vim.keymap.set("n", "<leader>gm", "<cmd>Git mergetool<CR>", { desc = "[G]it [M]ergetool" })
 
 		-- Set :Browse for opening GitHub URLs via :GBrowse
 		vim.api.nvim_create_user_command("Browse", function(data)

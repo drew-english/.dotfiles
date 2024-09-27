@@ -2,7 +2,7 @@ return {
 	"echasnovski/mini.nvim",
 	config = function()
 		require("mini.surround").setup()
-		require("mini.git").setup()
+		-- require("mini.git").setup()
 		require("mini.files").setup({
 			mappings = {
 				go_in_plus = "<CR>",
@@ -43,6 +43,7 @@ return {
 			},
 		})
 
+        -- require("mini.statusline").setup()
 		require("drew.custom.mini")
 	end,
 }
