@@ -105,11 +105,11 @@ export NVM_DIR=~/.nvm
 # gvm
 [[ -f ~/.gvm/scripts/gvm ]]  && source ~/.gvm/scripts/gvm
 
-# zoxide config
-eval "$(zoxide init --cmd cd zsh)"
-
 # asdf config
 source ~/.asdf/asdf.sh
+
+# zoxide config
+eval "$(zoxide init --cmd cd zsh)"
 
 # fzf config
 source <(fzf --zsh)
