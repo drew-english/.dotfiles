@@ -18,6 +18,15 @@ return {
 						LineNr = { fg = "#737272" },
 					},
 				},
+                palettes = {
+					nightfox = {
+                        bg0 = "#171b20",
+                        bg1 = "#1f242a",
+                        bg3 = "#323a46",
+                        sel0 = "#353d47",
+                        sel1 = "#495565",
+					},
+                },
 			})
 			vim.cmd.colorscheme("nightfox")
 		end,
