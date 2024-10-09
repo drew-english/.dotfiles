@@ -12,7 +12,7 @@ vim.keymap.set(
 local files_open_new_win = function(win_cmd)
 	return function()
 		local new_target_window
-		vim.api.nvim_win_call(MiniFiles.get_target_window(), function()
+		vim.api.nvim_win_call(MiniFiles.get_explorer_state().target_window, function()
 			vim.cmd(win_cmd)
 			new_target_window = vim.api.nvim_get_current_win()
 		end)
