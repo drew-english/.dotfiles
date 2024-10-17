@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 # https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-sessionizer
 
+# Flags:
+# [-s] search within given dirs
+
+ignored_folders="worktrees"
 selected="~/"
 dir_start_idx=1
 
@@ -14,7 +18,7 @@ fi
 
 
 if [[ $1 == "-s" ]]; then
-        selected=$(find $selected -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find $selected -mindepth 1 -maxdepth 1 -type d  -not -regex ".*\(${ignored_folders}\)$" | fzf)
 fi
 
 if [[ ! -d $selected ]]; then

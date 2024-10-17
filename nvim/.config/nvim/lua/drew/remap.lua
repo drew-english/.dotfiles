@@ -5,6 +5,8 @@ vim.g.maplocalleader = " "
 
 set("n", "<C-d>", "<C-d>zz")
 set("n", "<C-u>", "<C-u>zz")
+set("n", "n", "nzz")
+set("n", "N", "Nzz")
 
 set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 set("n", "<Esc>", "<cmd>nohlsearch<CR>")
