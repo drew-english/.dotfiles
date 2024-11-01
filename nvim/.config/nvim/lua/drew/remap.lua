@@ -22,3 +22,5 @@ set("n", "<leader>x", "<cmd>.lua<CR>", { desc = "Execute the current line" })
 set("n", "<leader>X", "<cmd>source %<CR>", { desc = "Execute the current file" })
 
 set("n", "<leader>%", "<cmd>call setreg('+', expand('%'))<CR>", { desc = "Copy buffer file path" })
+set("x", "*", "\"zy/<C-r>z<CR>", { desc = "Search forwards for currently selected text" })
+set("x", "#", "\"zy?<C-r>z<CR>", { desc = "Search backwards for currently selected text" })
