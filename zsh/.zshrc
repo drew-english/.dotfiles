@@ -98,7 +98,11 @@ unset_proxy() {
     unset ${=proxy_env_vars}
 }
 
-source ~/.zsh_profile
+# Custom paths
+export PATH=~/.local/scripts:$PATH
+addToPathFront ~/.local/scripts
+addToPathFront ~/.local/bin
+
 
 export NVM_DIR=~/.nvm
 

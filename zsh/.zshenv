@@ -7,7 +7,6 @@ alias gpo='unset PUSH_ANYWAY; git push origin HEAD'
 alias gpro='gpr;gpo'
 alias ga='git add .'
 alias gcb='git co -b'
-alias ezc='[ -f ~/workspace/easy_branch_checkout.rb ] && ruby ~/workspace/easy_branch_checkout.rb'
 alias gp='git pair'
 alias gcm='git co $(git_main_branch)'
 alias gc='git co'
@@ -23,19 +22,13 @@ alias gri='git rebase -i'
 alias gcp='git cherry-pick'
 alias gca='git add . && git commit --amend --no-edit'
 alias gcmm='git commit -m'
-alias co_test='git fetch; git tag | grep deploy_test1_ | sort | tail -1 | xargs git branch --all --contains | grep -o [1-9][0-9].[0-1][0-9].[1-9] | sort | tail -1 | xargs git checkout'
-alias co_pie='git fetch; git tag | grep deploy_pie1_ | sort | tail -1 | xargs git branch --all --contains | grep -o [1-9][0-9].[0-1][0-9].[1-9] | sort | tail -1 | xargs git checkout'
-alias co_stage='git fetch; git tag | grep deploy_stage1_ | sort | tail -1 | xargs git branch --all --contains | grep -o [1-9][0-9].[0-1][0-9].[1-9] | sort | tail -1 | xargs git checkout'
-alias co_prod='git fetch; git tag | grep deploy_production_ | sort | tail -1 | xargs git branch --all --contains | grep -o [1-9][0-9].[0-1][0-9].[1-9] | sort | tail -1 | xargs git checkout'
-alias gwm='git whatchanged --since 7-days-ago | grep migrate'
-alias glw='git log --pretty="%h - %s" --since="7 days ago"'
 alias fbr='git checkout $(git branch --all | grep -v HEAD | fzf | sed "s/.* //" | sed "s#remotes/[^/]*/##")'
 alias fcs='git log --color=always --pretty=oneline --abbrev-commit --reverse | fzf --ansi --tac +s +m | sed "s/ .*//"'
 
 # Rails
 alias rc='bundle exec rails console'
 alias rs='bundle exec rails server'
-alias rsp='bundle exec rspec'
+alias rspec='bundle exec rspec'
 alias rdm='bundle exec rake db:migrate'
 alias rdr='bundle exec rake db:reset'
 alias rds='bundle exec rake db:seed'
@@ -44,9 +37,4 @@ alias rds='bundle exec rake db:seed'
 alias tf='terraform'
 alias tg='terragrunt'
 alias tgra='terragrunt run-all'
-
-# Custom paths
-export PATH=~/.local/scripts:$PATH
-addToPathFront ~/.local/scripts
-addToPathFront ~/.local/bin
 
