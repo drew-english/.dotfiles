@@ -16,6 +16,7 @@ return {
 			undo = { suffix = "" },
 			window = { suffix = "" },
 			yank = { suffix = "" },
+			quickfix = { suffix = "" },
 		})
 
 		local diff = require("mini.diff")

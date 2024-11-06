@@ -13,6 +13,8 @@ set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 set("n", "<leader>q", vim.cmd.copen, { desc = "Open [Q]uickfix list" })
 set("n", "<leader>Q", vim.cmd.cclose, { desc = "Close [Q]uickfix list" })
+set("n", "]q", "<cmd>cn<CR>", { desc = "Next [Q]uickfix Entry" })
+set("n", "[q", "<cmd>cp<CR>", { desc = "Previous [Q]uickfix Entry" })
 
 set("x", "<leader>p", [["_dP]])
 set({ "n", "v" }, "<leader>y", [["+y]])
