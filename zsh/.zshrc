@@ -121,3 +121,6 @@ source <(fzf --zsh)
 # OS specific config
 source ~/.zsh_os
 
+# re-source to override omz configs
+source ~/.zshenv
+
