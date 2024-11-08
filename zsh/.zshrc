@@ -106,9 +106,6 @@ addToPathFront ~/.local/bin
 
 export NVM_DIR=~/.nvm
 
-# gvm
-[[ -f ~/.gvm/scripts/gvm ]]  && source ~/.gvm/scripts/gvm
-
 # asdf config
 source ~/.asdf/asdf.sh
 
