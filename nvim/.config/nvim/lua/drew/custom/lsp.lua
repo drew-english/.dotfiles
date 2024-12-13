@@ -1,12 +1,5 @@
 require("lazydev").setup()
 require("mason").setup()
-require("lsp-feedback").setup({
-	statusline = {
-		base_hl_group = "MiniStatuslineDevinfo",
-		slow_request_hl_group = "MiniStatuslineModeInsert",
-		bad_response_hl_group = "MiniStatuslineModeReplace",
-	},
-})
 
 -- Set local settings on LSP attach
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -56,7 +49,6 @@ local server_cfgs = {
 local ensure_installed = {
 	"gopls",
 	"lua_ls",
-	"ruby_lsp",
 }
 
 require("mason-lspconfig").setup({
@@ -70,3 +62,5 @@ require("mason-lspconfig").setup({
 		end,
 	},
 })
+
+require("lspconfig").ruby_lsp.setup({ capabilities = capabilities })
