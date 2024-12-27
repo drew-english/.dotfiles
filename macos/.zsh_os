@@ -1,6 +1,6 @@
 # Path modifications
 addToPath ~/Library/Python/3.9/bin
-addToPath /opt/homebrew/opt/postgresql@15/bin
+addToPath /opt/homebrew/opt/postgresql@17/bin
 
 function settitle() {
   echo -n -e "\033]0;"$*"\007"
