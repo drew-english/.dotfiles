@@ -3,10 +3,16 @@ return {
 	init = function()
 		vim.g.projectionist_heuristics = {
             ["/"] = {
+                -- Ruby
                 ["Gemfile.lock"] = { alternate = "Gemfile" },
                 ["Gemfile"] = { alternate = "Gemfile.lock" },
                 ["app/*.rb"] = { alternate = "spec/{}_spec.rb" },
                 ["lib/*.rb"] = { alternate = { "spec/lib/{}_spec.rb", "spec/{}_spec.rb" } },
+
+                -- Go
+                ["*.go"] = { alternate = { "{}_test.go", "{dirname}/{dirname|basename}_suite_test.go" } },
+                ["*_test.go"] = { alternate = "{}.go", type = "test", dispatch = "go test {file}" },
+                ["!*_suite_test.go"] = {},
             },
 			["spec/"] = {
 				["spec/*_spec.rb"] = { alternate = { "app/{}.rb", "lib/{}.rb" }, type = "spec" },
