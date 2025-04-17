@@ -31,3 +31,7 @@ vim.api.nvim_create_autocmd("User", {
 		vim.keymap.set("n", "<esc>", MiniFiles.close, { buffer = buf_id, desc = "Close" })
 	end,
 })
+
+vim.keymap.set("n", "[i", function()
+	require("mini.bracketed").indent("backward")
+end, { desc = "Previous [I]ndent" })
