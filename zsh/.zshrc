@@ -107,7 +107,7 @@ addToPathFront ~/.local/bin
 export NVM_DIR=~/.nvm
 
 # asdf config
-source ~/.asdf/asdf.sh
+addToPathFront ~/.asdf/shims
 
 # zoxide config
 eval "$(zoxide init --cmd cd zsh)"
