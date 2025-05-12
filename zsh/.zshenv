@@ -24,6 +24,7 @@ alias gca='git add . && git commit --amend --no-edit'
 alias gcmm='git commit -m'
 alias fbr='git checkout $(git branch --all | grep -v HEAD | fzf | sed "s/.* //" | sed "s#remotes/[^/]*/##")'
 alias fcs='git log --color=always --pretty=oneline --abbrev-commit --reverse | fzf --ansi --tac +s +m | sed "s/ .*//"'
+alias gbh='git checkout $(git reflog --grep-reflog "checkout" --pretty=format:%gs | grep -o "to .*$" | grep -o " .*$" | awk "!seen[\$0]++" | sed -e "s/\s//" | fzf)'
 
 # Rails
 alias rc='bundle exec rails console'
