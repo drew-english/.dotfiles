@@ -14,17 +14,17 @@ return {
 				if args.file ~= "_spec.rb" then
 					vim.keymap.set(
 						"n",
-						"<C-F10>",
+						"<leader>df",
 						"<cmd>Focus rspec %<CR><cmd>Dispatch<CR>",
-						{ desc = "Run entire spec file" }
+						{ desc = "[D]ispatch [F]ile" }
 					)
 					vim.keymap.set(
 						"n",
-						"<C-S-F10>",
+						"<leader>dl",
 						'<cmd>execute "Focus rspec ".expand("%").":".getcurpos()[1]<CR><cmd>Dispatch<CR>',
-						{ desc = "Run specs from cursor line" }
+						{ desc = "[D]ispatch current [L]ine" }
 					)
-					vim.keymap.set("n", "<C-F8>", "<cmd>Dispatch<CR>", { desc = "Re-run previous specs" })
+					vim.keymap.set("n", "<leader>dr", "<cmd>Dispatch<CR>", { desc = "[D]ispatch [R]e-rerun" })
 				end
 			end,
 		})
