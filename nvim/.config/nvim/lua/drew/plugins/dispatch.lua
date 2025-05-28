@@ -7,6 +7,8 @@ return {
 			vim.opt.shell = "/bin/zsh"
 		end
 
+        vim.keymap.set("n", "<leader>dx", "<cmd>AbortDispatch<CR>", { desc = "[D]ispatch Abort" })
+
 		local augroup = vim.api.nvim_create_augroup("DrewVimDispatch", {})
 		vim.api.nvim_create_autocmd({ "BufEnter", "BufLeave" }, {
 			group = augroup,
