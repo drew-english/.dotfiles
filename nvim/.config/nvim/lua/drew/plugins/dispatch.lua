@@ -7,28 +7,36 @@ return {
 			vim.opt.shell = "/bin/zsh"
 		end
 
-        vim.keymap.set("n", "<leader>dx", "<cmd>AbortDispatch<CR>", { desc = "[D]ispatch Abort" })
+		local run_dispatch = function()
+			vim.g.last_dispatch = vim.b.dispatch
+			vim.cmd("Dispatch")
+		end
 
-		local augroup = vim.api.nvim_create_augroup("DrewVimDispatch", {})
-		vim.api.nvim_create_autocmd({ "BufEnter", "BufLeave" }, {
-			group = augroup,
-			callback = function(args)
-				if args.file ~= "_spec.rb" then
-					vim.keymap.set(
-						"n",
-						"<leader>df",
-						"<cmd>Focus rspec %<CR><cmd>Dispatch<CR>",
-						{ desc = "[D]ispatch [F]ile" }
-					)
-					vim.keymap.set(
-						"n",
-						"<leader>dl",
-						'<cmd>execute "Focus rspec ".expand("%").":".getcurpos()[1]<CR><cmd>Dispatch<CR>',
-						{ desc = "[D]ispatch current [L]ine" }
-					)
-					vim.keymap.set("n", "<leader>dr", "<cmd>Dispatch<CR>", { desc = "[D]ispatch [R]e-rerun" })
-				end
-			end,
-		})
+		local run_last_dispatch = function()
+			if not vim.g.last_dispatch then
+				vim.notify("No previous dispatch found", vim.log.levels.WARN)
+				return
+			end
+			vim.cmd("Dispatch " .. vim.g.last_dispatch)
+		end
+
+        local run_dispatch_line = function()
+            if not string.find(vim.b.dispatch, "rspec") then
+                vim.notify("Dispatch line only works with rspec", vim.log.levels.WARN)
+                return
+            end
+
+            if string.find(vim.b.dispatch, ":") then
+                vim.b.dispatch = string.gsub(vim.b.dispatch, ":%d+", "")
+            end
+
+            vim.b.dispatch = vim.b.dispatch .. ":" .. vim.fn.getcurpos()[2]
+            run_dispatch()
+        end
+
+		vim.keymap.set("n", "<leader>dx", "<cmd>AbortDispatch<CR>", { desc = "[D]ispatch Abort" })
+		vim.keymap.set("n", "<leader>dd", run_dispatch, { desc = "[D]ispatch" })
+		vim.keymap.set("n", "<leader>dr", run_last_dispatch, { desc = "[D]ispatch [R]erun" })
+		vim.keymap.set("n", "<leader>dl", run_dispatch_line, { desc = "[D]ispatch [L]ine" })
 	end,
 }

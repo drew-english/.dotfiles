@@ -15,8 +15,8 @@ return {
                 ["!*_suite_test.go"] = {},
             },
 			["spec/"] = {
-				["spec/*_spec.rb"] = { alternate = { "app/{}.rb", "lib/{}.rb" }, type = "spec" },
-                ["spec/lib/*_spec.rb"] = { alternate = "lib/{}.rb", type = "spec" },
+				["spec/*_spec.rb"] = { alternate = { "app/{}.rb", "lib/{}.rb" }, type = "spec", dispatch = "rspec {file}" },
+                ["spec/lib/*_spec.rb"] = { alternate = "lib/{}.rb", type = "spec", dispatch = "rspec {file}" },
 			},
 		}
 
