@@ -11,8 +11,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
 		map("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
+		map("gD", function()
+			vim.cmd("split | normal T")
+			vim.lsp.buf.definition()
+		end, "[G]oto [D]efinition in new tab")
 		map("gr", vim.lsp.buf.references, "[G]oto [R]eferences")
-		map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 		map("<leader>csd", require("telescope.builtin").lsp_document_symbols, "[C]ode [S]ymbols [D]ocument")
 		map("<leader>cr", vim.lsp.buf.rename, "[C]ode [R]ename")
 		map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
