@@ -35,7 +35,7 @@ return {
         end
 
 		vim.keymap.set("n", "<leader>dx", "<cmd>AbortDispatch<CR>", { desc = "[D]ispatch Abort" })
-		vim.keymap.set("n", "<leader>dd", run_dispatch, { desc = "[D]ispatch" })
+		vim.keymap.set("n", "<leader>df", run_dispatch, { desc = "[D]ispatch [F]ile" })
 		vim.keymap.set("n", "<leader>dr", run_last_dispatch, { desc = "[D]ispatch [R]erun" })
 		vim.keymap.set("n", "<leader>dl", run_dispatch_line, { desc = "[D]ispatch [L]ine" })
 	end,
