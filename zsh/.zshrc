@@ -109,9 +109,6 @@ export NVM_DIR=~/.nvm
 # asdf config
 addToPathFront ~/.asdf/shims
 
-# zoxide config
-eval "$(zoxide init --cmd cd zsh)"
-
 # fzf config
 source <(fzf --zsh)
 
