@@ -98,11 +98,11 @@ unset_proxy() {
     unset ${=proxy_env_vars}
 }
 
-# Custom paths
+# Custom
+export VISUAL=vim
 export PATH=~/.local/scripts:$PATH
 addToPathFront ~/.local/scripts
 addToPathFront ~/.local/bin
-
 
 export NVM_DIR=~/.nvm
 
