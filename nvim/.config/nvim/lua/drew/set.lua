@@ -1,5 +1,8 @@
 local opt = vim.opt
 
+-- Exec local directory configs
+opt.exrc = true
+
 -- Make line numbers default
 opt.number = true
 opt.relativenumber = true
