@@ -18,7 +18,7 @@ fi
 
 
 if [[ $1 == "-s" ]]; then
-    selected=$(find $selected -mindepth 1 -maxdepth 1 -type d  -not -regex ".*\(${ignored_folders}\)$" | fzf)
+    selected=$(find $selected -mindepth 1 -maxdepth 1 -type d  -not -regex ".*\(${ignored_folders}\)$" | fzf --cycle --tmux)
 fi
 
 if [[ ! -d $selected ]]; then
