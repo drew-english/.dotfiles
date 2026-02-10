@@ -16,7 +16,7 @@ vim.api.nvim_create_user_command("MarkdownToJira", function()
     local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
     local content = table.concat(lines, "\n")
 
-    local result = vim.fn.system("pandoc -f markdown -t jira", content)
+    local result = vim.fn.system("pandoc -f markdown+hard_line_breaks -t jira", content)
     if vim.v.shell_error ~= 0 then
         print("Error converting markdown to jira format: " .. result)
         return
