@@ -24,4 +24,5 @@ require("lazy").setup("drew.plugins", {
 		},
 	},
 	change_detection = { notify = false },
+	local_spec = true,
 })

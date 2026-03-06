@@ -49,11 +49,11 @@ return {
 
 		vim.keymap.set("n", "<C-p>", function()
 			builtin.git_files({ show_untracked = true })
-		end, { desc = "[S]earch by [G]it" })
+		end, { desc = "Search Project Files" })
 
 		vim.keymap.set("n", "<C-f>", function()
 			builtin.live_grep({ additional_args = { "--hidden", "--glob=!.git/" } })
-		end, { desc = "[S]earch [/] in All Files" })
+		end, { desc = "Search All Files" })
 
 		vim.keymap.set("n", "<leader>s?", builtin.help_tags, { desc = "[S]earch Help" })
 		vim.keymap.set("n", "<leader>sh", builtin.pickers, { desc = "[S]earch [H]istory" })
