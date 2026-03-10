@@ -62,8 +62,10 @@ require("mason-lspconfig").setup({
 
 			server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
 			vim.lsp.config(server_name, server)
+            vim.lsp.enable(server_name)
 		end,
 	},
 })
 
 vim.lsp.config("ruby_lsp", { capabilities = capabilities })
+vim.lsp.enable("ruby_lsp")
