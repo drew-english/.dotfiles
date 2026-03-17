@@ -4,3 +4,5 @@
 mv_to_host() {
     mv $1 /mnt/c/Users/englisan/Downloads
 }
+
+export BROWSER=explorer.exe
