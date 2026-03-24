@@ -41,3 +41,4 @@ alias tgra='terragrunt run-all'
 
 # AWS
 alias pieslogin='aws ssm start-session --target $(aws ec2 --no-paginate describe-instances --filter "Name=tag:FormationStack,Values=Pie1Gemini" | jq "[.Reservations[].Instances[].Tags[]] | map(select(.Key == \"Name\" and (.Value | test(\"GeminiUnicorn\")))) | [.[].Value][0]" | sed -e "s/\"//g" | sed -e "s/.*\(i-.*\)/\1/")'
+alias purgehostsqs="aws --profile saml sqs list-queues | grep -i \$(hostname) | xargs -I@ sh -c 'url=@; aws --profile saml sqs purge-queue --queue-url \${url%,} && echo Purged Queue: \${url%,}'"
