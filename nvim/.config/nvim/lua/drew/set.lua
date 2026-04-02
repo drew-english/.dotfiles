@@ -10,9 +10,6 @@ opt.relativenumber = true
 -- Enable mouse mode
 opt.mouse = "a"
 
--- Don't show the mode, since it's already in status line
-opt.showmode = false
-
 opt.breakindent = true
 opt.undofile = true
 
@@ -25,6 +22,10 @@ opt.smartindent = true
 
 opt.updatetime = 250
 opt.timeoutlen = 300
+
+-- Enable completion menu
+opt.completeopt = "menu,menuone,noselect"
+-- vim.opt.autocomplete = true
 
 -- Preview substitutions live
 opt.inccommand = "split"

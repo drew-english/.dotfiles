@@ -1,28 +1,21 @@
-return {
-	{
-		"github/copilot.vim",
-		-- config = function()
-		-- 	vim.cmd.Copilot("disable")
-		-- end,
-	},
-	{
-		"christoomey/vim-tmux-navigator",
-		cmd = {
-			"TmuxNavigateLeft",
-			"TmuxNavigateDown",
-			"TmuxNavigateUp",
-			"TmuxNavigateRight",
-			"TmuxNavigatePrevious",
-		},
-		keys = {
-			{ "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-			{ "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-			{ "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-			{ "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
-		},
-	},
-	{
-		"kevinhwang91/nvim-bqf",
-		opts = {},
-	},
-}
+-- Core plugins are added here, and plugins requiring extra configuration are referenced in their own files
+
+require("drew.plugins.colorshceme")
+require("drew.plugins.dispatch") -- TODO: lazy load?
+require("drew.plugins.mini")
+require("drew.plugins.fugitive")
+require("drew.plugins.telescope")
+require("drew.plugins.treesitter")
+require("drew.plugins.lsp")
+require("drew.plugins.projectionist")
+
+vim.pack.add({
+    "https://github.com/github/copilot.vim",
+    "https://github.com/christoomey/vim-tmux-navigator",
+    "https://github.com/kevinhwang91/nvim-bqf", -- TODO: check setup
+	"https://github.com/folke/which-key.nvim",
+    "https://github.com/nvim-tree/nvim-web-devicons",
+})
+
+vim.cmd("packadd nvim.undotree")
+vim.keymap.set("n", "<leader>u", "<CMD>Undotree<CR>", {})

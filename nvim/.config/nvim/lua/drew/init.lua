@@ -1,6 +1,6 @@
 require("drew.remap")
 require("drew.set")
-require("drew.lazy")
+require("drew.plugins")
 
 vim.api.nvim_create_user_command("DiagnosticsToggleVirtualText", function()
 	local current_value = vim.diagnostic.config().virtual_text
