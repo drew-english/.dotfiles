@@ -10,7 +10,6 @@ require("drew.plugins.lsp")
 require("drew.plugins.projectionist")
 
 vim.pack.add({
-    "https://github.com/kevinhwang91/nvim-bqf",
 	"https://github.com/folke/which-key.nvim",
     "https://github.com/nvim-tree/nvim-web-devicons",
 })
