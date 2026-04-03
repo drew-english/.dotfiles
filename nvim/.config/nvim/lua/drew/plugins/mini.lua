@@ -28,14 +28,6 @@ diff.setup({
     },
 })
 
-local ai = require("mini.ai")
-ai.setup({
-    custom_textobjects = {
-        H = diff.textobject,
-        F = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }),
-    },
-})
-
 vim.keymap.set("n", "<leader>hd", diff.toggle_overlay, { desc = "Toggle [h]unk [d]iff overlay" })
 vim.keymap.set(
 	"n",
