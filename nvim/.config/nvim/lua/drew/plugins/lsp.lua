@@ -16,7 +16,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
             vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
         end
 
-        vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
         map("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
         map("gD", function()
             vim.cmd("split | normal T")
@@ -48,5 +47,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
-vim.lsp.enable({ 'ruby_lsp', 'lua_ls', 'gopls' })
+vim.lsp.enable({ 'ruby_lsp', 'lua_ls', 'gopls', 'copilot' })
+
 vim.lsp.inline_completion.enable()
+vim.keymap.set('i', '<Tab>', function()
+    if not vim.lsp.inline_completion.get() then
+        return '<Tab>'
+    end
+end, { expr = true, desc = 'Accept the current inline completion' })
