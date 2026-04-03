@@ -1,6 +1,5 @@
 vim.pack.add({
     "https://github.com/williamboman/mason.nvim",
-    "https://github.com/j-hui/fidget.nvim",
     "https://github.com/neovim/nvim-lspconfig",
     "https://github.com/folke/lazydev.nvim"
 })
@@ -55,3 +54,33 @@ vim.keymap.set('i', '<Tab>', function()
         return '<Tab>'
     end
 end, { expr = true, desc = 'Accept the current inline completion' })
+
+-- Update UI progress with LSP progress notifications
+vim.api.nvim_create_autocmd('LspProgress', {
+    callback = function(ev)
+        local value = ev.data.params.value
+        vim.api.nvim_echo({ { value.message or 'done' } }, false, {
+            id = 'lsp.' .. ev.data.params.token,
+            kind = 'progress',
+            source = 'vim.lsp',
+            title = value.title,
+            status = value.kind ~= 'end' and 'running' or 'success',
+            percent = value.percentage,
+        })
+        vim.cmd("redrawstatus")
+    end,
+})
+
+-- Set busy status when LSP is processing
+vim.api.nvim_create_autocmd('LspRequest', {
+    callback = function(ev)
+        local request = ev.data.request
+        if request.type == 'pending' then
+            vim.bo.busy = (vim.bo.busy or 0) + 1
+        elseif request.type == 'cancel' then
+            vim.bo.busy = math.max(0, vim.bo.busy - 1)
+        elseif request.type == 'complete' then
+            vim.bo.busy = math.max(0, vim.bo.busy - 1)
+        end
+    end,
+})
