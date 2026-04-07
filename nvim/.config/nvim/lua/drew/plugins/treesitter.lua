@@ -14,7 +14,7 @@ vim.pack.add({
 --     indent = { enable = true, disable = { "ruby" } },
 --     endwise = { enable = true },
 -- }
-require("nvim-treesitter").install({ "bash", "html", "lua", "markdown", "vim", "vimdoc", "ruby", "go" })
+require("nvim-treesitter").install({ "bash", "html", "lua", "markdown", "vim", "vimdoc", "ruby", "go", "gomod", "yaml" })
 vim.filetype.add({ extension = { mdx = "markdown" } })
 
 vim.api.nvim_create_autocmd('FileType', {
