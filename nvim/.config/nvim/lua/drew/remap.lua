@@ -27,9 +27,3 @@ set("x", "#", "\"zy?<C-r>z<CR>", { desc = "Search backwards for currently select
 
 -- go to file in new tab
 set("n", "gF", "<cmd>split | normal gfT<CR>", { desc = "Go to file in new tab" })
-
--- window navigation
-set("n", "<C-h>", "<C-w>h", { desc = "Navigate window left" })
-set("n", "<C-j>", "<C-w>j", { desc = "Navigate window down" })
-set("n", "<C-k>", "<C-w>k", { desc = "Navigate window up" })
-set("n", "<C-l>", "<C-w>l", { desc = "Navigate window right" })

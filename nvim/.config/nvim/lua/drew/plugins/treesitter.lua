@@ -25,9 +25,9 @@ vim.api.nvim_create_autocmd('FileType', {
           vim.treesitter.start()
 
           -- vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-          -- if vim.bo.filetype == 'ruby' then
-          --     vim.bo[event.buf].syntax = 'ON'
-          -- end
+          if vim.bo.filetype == 'ruby' then
+              vim.bo[event.buf].syntax = 'ON'
+          end
       end
   end,
 })
