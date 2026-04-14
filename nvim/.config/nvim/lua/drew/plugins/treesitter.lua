@@ -21,7 +21,10 @@ vim.api.nvim_create_autocmd('FileType', {
   callback = function(event)
       local ts = require("nvim-treesitter")
       local installed = ts.get_installed()
-      if vim.tbl_contains(installed, vim.bo.filetype) then
+      local additional_fts = { "sh" }
+      local enabled_fts = vim.list_extend(installed, additional_fts)
+
+      if vim.tbl_contains(enabled_fts, vim.bo.filetype) then
           vim.treesitter.start()
 
           -- vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"

@@ -46,7 +46,35 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
-vim.lsp.enable({ 'ruby_lsp', 'lua_ls', 'gopls', 'copilot' })
+
+-- Enable LSP configurations
+local mason_reg = require("mason-registry")
+local mason_specs = mason_reg.get_all_package_specs()
+local mason_cfgs = {}
+for _, pkg_spec in ipairs(mason_specs) do
+    local lspconfig = vim.tbl_get(pkg_spec, "neovim", "lspconfig")
+    if lspconfig then
+        mason_cfgs[pkg_spec.name] = lspconfig
+    end
+end
+
+local system_lsps = { 'ruby_lsp', 'copilot' }
+
+function EnableLSPs()
+    local mason_lsps = vim.tbl_map(function(pkg)
+        local nvim_name = mason_cfgs[pkg]
+        if not nvim_name then
+            vim.notify("Mason package " .. pkg .. " does not have a neovim.lspconfig name, skipping", vim.log.levels
+            .WARN)
+        end
+        return nvim_name
+    end, mason_reg.get_installed_package_names())
+
+    vim.lsp.enable(vim.list_extend(mason_lsps, system_lsps))
+end
+
+EnableLSPs()
+mason_reg:on("update:success", EnableLSPs)
 
 vim.lsp.inline_completion.enable()
 vim.keymap.set('i', '<Tab>', function()
