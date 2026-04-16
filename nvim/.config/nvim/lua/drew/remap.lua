@@ -12,7 +12,13 @@ set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 set("n", "<leader>q", vim.cmd.copen, { desc = "Open [Q]uickfix list" })
-set("n", "<leader>Q", vim.cmd.cclose, { desc = "Close [Q]uickfix list" })
+set("n", "<leader>Q", function()
+    vim.cmd.cclose()
+    local fugitive_buf = vim.fn.getbufinfo('fugitive://*')[1]
+    if fugitive_buf then
+        vim.api.nvim_buf_delete(fugitive_buf.bufnr, { force = true })
+    end
+end, { desc = "Close [Q]uickfix or Fugutive" })
 
 set("x", "<leader>p", [["_dP]])
 set({ "n", "v" }, "<leader>y", [["+y]])
