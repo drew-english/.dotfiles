@@ -102,6 +102,10 @@ vim.api.nvim_create_autocmd('LspProgress', {
 -- Set busy status when LSP is processing
 vim.api.nvim_create_autocmd('LspRequest', {
     callback = function(ev)
+        if vim.lsp.get_client_by_id(1).config.name == 'copilot' then
+            return
+        end
+
         local request = ev.data.request
         if request.type == 'pending' then
             vim.bo.busy = (vim.bo.busy or 0) + 1
