@@ -25,6 +25,7 @@ alias gcmm='git commit -m'
 alias fbr='git checkout $(git branch --all | grep -v HEAD | fzf | sed "s/.* //" | sed "s#remotes/[^/]*/##")'
 alias fcs='git log --color=always --pretty=oneline --abbrev-commit --reverse | fzf --ansi --tac +s +m | sed "s/ .*//"'
 alias gbh='git checkout $(git reflog --grep-reflog "checkout" --pretty=format:%gs | grep -o "to .*$" | grep -o " .*$" | awk "!seen[\$0]++" | sed -e "s/\s//" | fzf)'
+alias gtc='git tag --contains $(fcs)'
 
 # Rails
 alias rc='bundle exec rails console'
@@ -33,6 +34,7 @@ alias rspec='bundle exec rspec'
 alias rdm='bundle exec rake db:migrate'
 alias rdr='bundle exec rake db:reset'
 alias rds='bundle exec rake db:seed'
+alias rspecc='rspec $(git status --short | sed "s/.\{3\}//" | grep _spec.rb)'
 
 # Terraform
 alias tf='terraform'
