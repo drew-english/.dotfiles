@@ -11,7 +11,7 @@ vim.api.nvim_create_autocmd('FileType', {
   callback = function(event)
       local ts = require("nvim-treesitter")
       local installed = ts.get_installed()
-      local additional_fts = { "sh" }
+      local additional_fts = { "sh", "javascriptreact" }
       local enabled_fts = vim.list_extend(installed, additional_fts)
 
       if vim.tbl_contains(enabled_fts, vim.bo.filetype) then
