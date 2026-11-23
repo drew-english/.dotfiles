@@ -7,4 +7,10 @@ mv_to_host() {
 
 export BROWSER=explorer.exe
 
+# Task Manager (TMUI)
 [[ -r /home/dev/.tasks.env ]] && source /home/dev/.tasks.env
+
+# AI
+codex() {
+  command codex --model gpt-6.2-sol "$@"
+}
