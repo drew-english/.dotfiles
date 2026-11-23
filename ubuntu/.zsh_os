@@ -6,3 +6,5 @@ mv_to_host() {
 }
 
 export BROWSER=explorer.exe
+
+[[ -r /home/dev/.tasks.env ]] && source /home/dev/.tasks.env
